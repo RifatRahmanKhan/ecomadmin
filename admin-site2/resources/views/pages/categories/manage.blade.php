@@ -14,7 +14,7 @@
 	                <h3 class="card-title col-md-6">All Categories</h3>
 
 	                <div class="col-md-6">
-	                  <a href='{{route('district.create')}}' class="float-sm-right btn btn-success">Add new</a>
+	                  <a href='{{route('category.create')}}' class="float-sm-right btn btn-success">Add new</a>
 	                </div>
 	                <!-- /.add new -->
 	              </div>

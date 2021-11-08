@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SiteInfoController;
 use App\Http\Controllers\DivisionController;
-use App\Http\Controllers\VisitorDetailsController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\CategoryController;
 
 
 Route::get('/', function () {
@@ -40,6 +41,15 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'visitorDetails'], function(){
         Route::get('/', [VisitorDetailsController::class, 'index'])->name('visitorDetails.manage');
         Route::post('destroy/{id}', [VisitorDetailsController::class, 'destroy'])->name('visitorDetails.destroy');
+    });
+
+    Route::group(['prefix' => 'categories'], function(){
+        Route::get('/', [CategoryController::class, 'index'])->name('category.manage');
+        Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::post('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::post('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
 });
 
