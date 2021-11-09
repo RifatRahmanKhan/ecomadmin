@@ -1,25 +1,9 @@
-@extends ( 'backend.layout.template' )
+@extends ( 'layouts.app' )
 
-@section ( 'body-content' )
+@section ( 'content' )
   
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-              <li class="breadcrumb-item active">Add New Product</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+  <div>
+    
 
     <!-- Main content -->
     <section class="content">
@@ -32,14 +16,19 @@
                 <div class="card-header">
                   <h3 class="card-title">Add New Product</h3>
 
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                  </div>
+                  
                   <!-- /.card-tools -->
                 </div>
                 <!-- /.card-header -->
+                @if($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach($errors->all() as $error)
+                      <li>{{  $error  }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
                 <div class="card-body" style="display: block;">                 
                   <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -52,15 +41,7 @@
                           <input type="text" name="title" class="form-control" required="required">
                         </div>
 
-                        <div class="form-group">
-                          <label>Brand</label>                          
-                          <select class="form-control" name="brand_id">
-                            <option value="0">Please Select The Product Brand</option>
-                            @foreach( App\Models\Backend\Brand::orderBy('name', 'asc')->get() as $brand )
-                              <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                            @endforeach
-                          </select>
-                        </div>
+                        
 
                         <div class="form-group">
                           <label>Category</label>
