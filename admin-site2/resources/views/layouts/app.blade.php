@@ -45,6 +45,7 @@
 <script src="{{ asset('dependencies/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
 <!--custom script-->
 <script src="{{ asset('assets/js/script.js')}}"></script>
+@yield('script')
 </body>
 
 </html>

@@ -6,6 +6,7 @@ use App\Http\Controllers\SiteInfoController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 
 Route::get('/', function () {
@@ -51,6 +52,16 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
         Route::post('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
+
+    Route::group(['prefix' => 'brands'], function(){
+        Route::get('/', [BrandController::class, 'index'])->name('brand.manage');
+        Route::get('/create', [BrandController::class, 'create'])->name('brand.create');
+        Route::post('/store', [BrandController::class, 'store'])->name('brand.store');
+        Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('brand.edit');
+        Route::post('/update/{id}', [BrandController::class, 'update'])->name('brand.update');
+        Route::post('/destroy/{id}', [BrandController::class, 'destroy'])->name('brand.destroy');
+    });
+
 });
 
 Auth::routes();

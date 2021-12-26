@@ -51,9 +51,9 @@
                       @if ( $category->image == NULL )
                         No Thumbnail Uploaded
                       @else
-                        <img src="{{ asset('backend/img/categories/' . $category->image ) }}" width="30">
+                        <img id="catImg" src="{{ asset('assets/img/categories/' . $category->image ) }}" width="30">
                       @endif
-                      <input type="file" name="image" class="form-control-file">
+                      <input id="imgInp" type="file" name="image" class="form-control-file">
                     </div>
 
                     <div class="form-group">
@@ -72,4 +72,25 @@
     <!-- /.content -->
   </div>
   
+@endsection
+@section('script')
+<script>
+$(document).ready(function(){
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#catImg').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+});
+</script>
 @endsection

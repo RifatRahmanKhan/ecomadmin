@@ -44,7 +44,15 @@
                     </div>
 
                     <div class="form-group">
-                      <input type="file" name="image" class="form-control-file">
+                      <div class="row">
+                        <div class="col-md-9">
+                          <input id='imgInp' type="file" name="image" class="form-control-file">
+                        </div>
+                          
+                        <div class="col-md-1">
+                          <img id="catImg" style="widgh:100%;height:auto;" alt=""category image />
+                        </div>
+                      </div>
                     </div>
 
                     <div class="form-group">
@@ -63,4 +71,25 @@
     <!-- /.content -->
   </div>
   
+@endsection
+@section('script')
+<script>
+$(document).ready(function(){
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#catImg').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+});
+</script>
 @endsection

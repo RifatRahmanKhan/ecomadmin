@@ -137,7 +137,7 @@ class CategoryController extends Controller
 
         if ( !is_null($category) ){
             // Delete Existing Image
-            if ( File::exists('backend/img/categories/' . $category->image ) ){
+            if ( File::exists('assets/img/categories/' . $category->image ) ){
                 File::delete('assets/img/categories/' . $category->image);
             }
             $category->delete();

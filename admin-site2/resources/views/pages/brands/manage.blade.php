@@ -1,52 +1,30 @@
-@extends ( 'backend.layout.template' )
+@extends ( 'layouts.app' )
 
-@section ( 'body-content' )
-	
-	<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-              <li class="breadcrumb-item active">Manage All Brand</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+@section('title', 'Brands')
 
-    <!-- Main content -->
+@section ( 'content' )
+	<!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row">
         	<div class="col-lg-12">
         		<div class="card card-primary">
-	              <div class="card-header">
-	                <h3 class="card-title">All Brand List</h3>
+	              <div class="card-header row">
+	                <h3 class="card-title col-md-6">All Brands</h3>
 
-	                <div class="card-tools">
-	                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-	                    <i class="fas fa-minus"></i>
-	                  </button>
+	                <div class="col-md-6">
+	                  <a href='{{route('brand.create')}}' class="float-sm-right btn btn-success">Add new</a>
 	                </div>
-	                <!-- /.card-tools -->
+	                <!-- /.add new -->
 	              </div>
 	              <!-- /.card-header -->
 	              <div class="card-body" style="display: block;">
-	                <table class="table table-bordered table-hover table-striped">
-					  <thead class="thead-dark">
+	                <table class="table table-responsive d-block d-md-tabletable-bordered table-hover table-striped">
+					  <thead class="text-danger">
 					    <tr>
 					      <th scope="col">#Sl.</th>
 					      <th scope="col">Brand Name</th>
-					      <th scope="col">Description</th>
-					      <th scope="col">Image</th>
 					      <th scope="col">Action</th>
 					    </tr>
 					  </thead>
@@ -57,15 +35,9 @@
 					  	@foreach ( $brands as $brand )
 					    <tr>
 					      <th scope="row">{{ $i }}</th>
+					      
 					      <td>{{ $brand->name }}</td>
-					      <td>{{ $brand->description }}</td>
-					      <td>
-					      	@if ( $brand->image == NULL )
-					      		No Thumbnail Uploaded
-					      	@else
-					      		<img src="{{ asset('backend/img/brands/' . $brand->image ) }}" width="30">
-					      	@endif
-					      </td>
+					      					      
 					      <td>
 					      	<div class="btn-group">
 					      		<a href="{{ route('brand.edit', $brand->id) }}" class="btn btn-primary btn-sm">Update</a>
@@ -110,7 +82,5 @@
         <!-- /.row -->
       </div><!--/. container-fluid -->
     </section>
-    <!-- /.content -->
-  </div>
-	
+    <!-- /.content -->	
 @endsection

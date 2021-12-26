@@ -20,7 +20,7 @@
 	              </div>
 	              <!-- /.card-header -->
 	              <div class="card-body" style="display: block;">
-	                <table class="table table-bordered table-hover table-striped">
+	                <table class="table table-responsive d-block d-md-tabletable-bordered table-hover table-striped">
 					  <thead class="text-danger">
 					    <tr>
 					      <th scope="col">#Sl.</th>
@@ -42,7 +42,7 @@
 					      	@if ( $category->image == NULL )
 					      		No Thumbnail Uploaded
 					      	@else
-					      		<img src="{{ asset('backend/img/categories/' . $category->image ) }}" width="30">
+					      		<img src="{{ asset('assets/img/categories/' . $category->image ) }}" width="30">
 					      	@endif
 					      </td>
 					      <td>{{ $category->name }}</td>
@@ -65,7 +65,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Do you confirm to delete this Brand?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Do you confirm to delete this Category?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
